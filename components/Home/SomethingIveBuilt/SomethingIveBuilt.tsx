@@ -100,14 +100,14 @@ export default function SomethingIveBuilt() {
             image: './img/parlament.png',
             link: 'https://www.parlament.al',
             technologies: ['React', 'ASP.NET', 'C#', 'Redux']
-        },
-        {
-            title: 'Parliament Landing Page',
-            description: `While developing  <span class='text-AAsecondary'>Official Albanian Parliament </span> page, I was essential in requirement gathering, website design and implementation and creating a well defined ODATA interface with the rest of the system. `,
-            image: './img/parlament.png',
-            link: 'https://www.parlament.al',
-            technologies: ['React', 'ASP.NET', 'C#', 'Redux']
         }
+        // {
+        //     title: 'Parliament Landing Page',
+        //     description: `While developing  <span class='text-AAsecondary'>Official Albanian Parliament </span> page, I was essential in requirement gathering, website design and implementation and creating a well defined ODATA interface with the rest of the system. `,
+        //     image: './img/parlament.png',
+        //     link: 'https://www.parlament.al',
+        //     technologies: ['React', 'ASP.NET', 'C#', 'Redux']
+        // }
 
         // Add other projects here...
     ]
