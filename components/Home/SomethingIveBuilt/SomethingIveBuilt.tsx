@@ -89,30 +89,8 @@ export default function SomethingIveBuilt() {
     const projects = [
         {
             title: 'Mamly',
-            description: `At <span class='text-AAsecondary'>Quickbird</span>, I played a crucial role in developing this app which in collaboration with <span class='text-AAsecondary'>TK insurance</span> helped thousands of post-natal mothers to recover from childbirth on the psychological level. 
-            Our focus was on personalized eduaction and connection with  One notable achievement was the release of NameWrapper with <span class='text-AAsecondary'>ERC72</span> support, enabling users to create <span class='text-AAsecondary'>subdomains</span>. This showcased our commitment to delivering innovative solutions.`,
-            image: '/img/mamly1.png',
-            link: 'https://www.mamly.de',
-            technologies: ['Docker', 'NestJS', 'ReactJS', 'Flutter']
-        },
-        {
-            title: 'Mamly',
-            description: `At <span class='text-AAsecondary'>Vision</span>, I played a crucial role in developing web3 components for their <span class='text-AAsecondary'>web3 application</span> using Next.js and web3 libraries. Our focus was on integrating new features and improving the user interface. One notable achievement was the release of NameWrapper with <span class='text-AAsecondary'>ERC72</span> support, enabling users to create <span class='text-AAsecondary'>subdomains</span>. This showcased our commitment to delivering innovative solutions.`,
-            image: '/img/mamly1.png',
-            link: 'https://www.mamly.de',
-            technologies: ['Docker', 'NestJS', 'ReactJS', 'Flutter']
-        },
-        {
-            title: 'Mamly',
-            description: `At <span class='text-AAsecondary'>Vision</span>, I played a crucial role in developing web3 components for their <span class='text-AAsecondary'>web3 application</span> using Next.js and web3 libraries. Our focus was on integrating new features and improving the user interface. One notable achievement was the release of NameWrapper with <span class='text-AAsecondary'>ERC72</span> support, enabling users to create <span class='text-AAsecondary'>subdomains</span>. This showcased our commitment to delivering innovative solutions.`,
-            image: '/img/mamly1.png',
-            link: 'https://www.mamly.de',
-            technologies: ['Docker', 'NestJS', 'ReactJS', 'Flutter']
-        },
-        {
-            title: 'Mamly',
-            description: `At <span class='text-AAsecondary'>Vision</span>, I played a crucial role in developing web3 components for their <span class='text-AAsecondary'>web3 application</span> using Next.js and web3 libraries. Our focus was on integrating new features and improving the user interface. One notable achievement was the release of NameWrapper with <span class='text-AAsecondary'>ERC72</span> support, enabling users to create <span class='text-AAsecondary'>subdomains</span>. This showcased our commitment to delivering innovative solutions.`,
-            image: '/img/mamly1.png',
+            description: `At <span class='text-AAsecondary'>Quickbird</span>, I played a crucial role in developing this app which in collaboration with <span class='text-AAsecondary'>TK insurance</span> helped thousands of post-natal mothers to recover from childbirth on the psychological level. `,
+            image: './img/mamly1.png',
             link: 'https://www.mamly.de',
             technologies: ['Docker', 'NestJS', 'ReactJS', 'Flutter']
         }

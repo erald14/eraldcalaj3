@@ -1,15 +1,15 @@
 // /** @type {import('next').NextConfig} */
 
 // const nextConfig = {
-//   reactStrictMode: false,
-//   swcMinify: true,
+//     reactStrictMode: false,
+//     swcMinify: true
 // }
 
 // module.exports = nextConfig
 /** @type {import('next').NextConfig} */
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-let assetPrefix = ''
+let assetPrefix = './'
 let basePath = ''
 
 if (isGithubActions) {
