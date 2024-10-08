@@ -93,6 +93,20 @@ export default function SomethingIveBuilt() {
             image: './img/mamly1.png',
             link: 'https://www.mamly.de',
             technologies: ['Docker', 'NestJS', 'ReactJS', 'Flutter']
+        },
+        {
+            title: 'Parliament Landing Page',
+            description: `While developing  <span class='text-AAsecondary'>Official Albanian Parliament </span> page, I was essential in requirement gathering, website design and implementation and creating a well defined ODATA interface with the rest of the system. `,
+            image: './img/parlament.png',
+            link: 'https://www.parlament.al',
+            technologies: ['React', 'ASP.NET', 'C#', 'Redux']
+        },
+        {
+            title: 'Parliament Landing Page',
+            description: `While developing  <span class='text-AAsecondary'>Official Albanian Parliament </span> page, I was essential in requirement gathering, website design and implementation and creating a well defined ODATA interface with the rest of the system. `,
+            image: './img/parlament.png',
+            link: 'https://www.parlament.al',
+            technologies: ['React', 'ASP.NET', 'C#', 'Redux']
         }
 
         // Add other projects here...
@@ -101,7 +115,7 @@ export default function SomethingIveBuilt() {
     return (
         <div
             id="SomethingIveBuiltSection"
-            className="flex flex-col xl:space-y-28 space-y-12 bg-AAprimary w-full 2xl:px-72 lg:px-24 md:px-16 sm:px-16 py-32 px-4"
+            className="flex flex-col xl:space-y-28 space-y-12 bg-AAprimary w-full 2xl:px-72 lg:px-24 md:px-16 sm:px-16 py-32 px-4 pb-12"
         >
             {/* Title */}
             <div data-aos="fade-up" className="flex flex-row items-center md:px-0">

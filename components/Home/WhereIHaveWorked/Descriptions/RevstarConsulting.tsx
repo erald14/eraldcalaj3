@@ -12,7 +12,7 @@ export default function RevstarConsulting() {
             keywords: ['client requirements']
         },
         {
-            text: 'Lead a internaltional team of 8 developers.',
+            text: 'Lead an internaltional team of 8 developers.',
             keywords: ['8 developers']
         },
         {
