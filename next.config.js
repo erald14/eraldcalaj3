@@ -9,7 +9,7 @@
 /** @type {import('next').NextConfig} */
 const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-let assetPrefix = './'
+let assetPrefix = ''
 let basePath = ''
 
 if (isGithubActions) {
