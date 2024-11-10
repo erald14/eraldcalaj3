@@ -56,8 +56,8 @@ export default function AboutMe(props) {
                                     {' '}
                                     Wemolo , Germany&apos;s 4th fastest growing startup
                                 </span>
-                                , I led the development several internal tools, and a low latency, highly available and
-                                consistent <span className="text-AAsecondary">authorization system.</span>
+                                , I led the development of several internal tools, and a low latency, highly available
+                                and consistent <span className="text-AAsecondary">authorization system.</span>
                             </span>
                         </div>
 
