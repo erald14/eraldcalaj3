@@ -1,3 +1,46 @@
+import { ParallaxScroll } from '../../components/ui/parallax-scroll'
 export default function Gallery() {
-    return <div>Gallery</div>
+    return (
+        <div>
+            <ParallaxScroll
+                images={[
+                    '/gallery/index1.jpg',
+                    '/gallery/index2.jpg',
+                    '/gallery/index4.jpg',
+                    '/gallery/index5.jpg',
+                    '/gallery/index6.jpg',
+                    '/gallery/index7.jpg',
+                    '/gallery/index8.jpg',
+                    '/gallery/index9.jpg',
+                    '/gallery/index10.jpg',
+                    '/gallery/index11.jpg',
+                    '/gallery/index12.jpg',
+                    '/gallery/index13.jpg',
+                    '/gallery/index14.jpg',
+                    '/gallery/index15.jpg',
+                    '/gallery/index16.jpg',
+                    '/gallery/index17.jpg',
+                    '/gallery/index18.jpg',
+                    '/gallery/index19.jpg',
+                    '/gallery/index20.jpg',
+                    '/gallery/index21.jpg',
+                    '/gallery/index22.jpg',
+                    '/gallery/index23.jpg',
+                    '/gallery/index24.jpg',
+                    '/gallery/index25.jpg',
+                    '/gallery/index26.jpg',
+                    '/gallery/index27.jpg',
+                    '/gallery/index28.jpg',
+                    '/gallery/index29.jpg',
+                    '/gallery/index30.jpg',
+                    '/gallery/index31.jpg',
+                    '/gallery/index32.jpg',
+                    '/gallery/index33.jpg',
+                    '/gallery/index34.jpg',
+                    '/gallery/index35.jpg',
+                    '/gallery/index36.jpg'
+                ]}
+            />
+        </div>
+    )
 }

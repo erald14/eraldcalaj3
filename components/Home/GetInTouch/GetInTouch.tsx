@@ -17,6 +17,12 @@ export default function GetInTouch() {
             {/* // ? Get In Touch */}
             <span className="text-gray-200 text-3xl sm:text-4xl font-bold tracking-wider opacity-85">Get In Touch</span>
             <p className="flex font-Header tracking-wider text-gray-400 text-center px-6 sm:px-16 md:px-0 md:w-[600px]">
+                I love traveling and photography, check out my gallery &nbsp;
+                <a href="/gallery" className="text-AAsecondary hover:underline">
+                    here
+                </a>
+            </p>
+            <p className="flex font-Header tracking-wider text-gray-400 text-center px-6 sm:px-16 md:px-0 md:w-[600px]">
                 I&apos;m currently seeking new opportunities and welcome any messages. Feel free to reach out whether
                 you have a question, want to collaborate, or simply want to connect - I&apos;ll make sure to respond
                 promptly!
