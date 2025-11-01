@@ -55,7 +55,7 @@ export default function Home() {
                     </h2>
                     <div style={{ fontSize: '12px', lineHeight: '1.6' }}>
                         <div style={{ marginBottom: '8px' }}>
-                            • I grew up in a small village in albania, it looked something like this:{' '}
+                            • I grew up in a small village in Albania, it looked something like this:{' '}
                             <a
                                 href="/gallery/index23.jpg"
                                 target="_blank"
@@ -234,8 +234,8 @@ export default function Home() {
 
                     {showSkills && (
                         <div style={{ fontSize: '12px' }}>
-                            AWS, Terraform, Docker, Node.js, React, Python, Product Research, Architecture Design,
-                            Delivery Management
+                            AWS, Terraform, Docker,Wireguard,AWS EKS,AWS ECS, Node.js, React, Python, Product Research,
+                            Architecture Design, Delivery Management
                         </div>
                     )}
                 </div>
@@ -259,38 +259,19 @@ export default function Home() {
                     {showBeliefs && (
                         <div style={{ fontSize: '12px', lineHeight: '1.6' }}>
                             <div style={{ marginBottom: '8px' }}>
-                                • Technology is a tool for reshaping the world to better serve human needs
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • Focus on raising the ceiling, not just the floor
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
                                 • Enthusiasm matters—work on things that excite you, energy drives progress
                             </div>
                             <div style={{ marginBottom: '8px' }}>
-                                • Speed matters: going fast forces focus on what's important, no time for bullshit
+                                • Speed matters: going fast forces focus on what's important.
                             </div>
                             <div style={{ marginBottom: '8px' }}>
-                                • Time is the denominator—a week is 2% of the year, use it wisely
+                                • The best coworker you can have , is someone who can make work fun.Be that person for
+                                someone else.
                             </div>
                             <div style={{ marginBottom: '8px' }}>
-                                • The best opportunities exist where conventional wisdom fails
+                                • Small teams are better: faster decisions, fewer meetings, more impact.
                             </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • We know less than we think—many of our beliefs are wrong, stay humble
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • Small teams are better: faster decisions, fewer meetings, more impact
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • You can do more than you think—we're often limited by invisible orthodoxy
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • Get dopamine from improving your ideas, not just validating them
-                            </div>
-                            <div style={{ marginBottom: '8px' }}>
-                                • The laws of physics are the only true limit—everything else is negotiable
-                            </div>
+                            <div style={{ marginBottom: '8px' }}>• The laws of physics are the only true limit.</div>
                         </div>
                     )}
                 </div>
