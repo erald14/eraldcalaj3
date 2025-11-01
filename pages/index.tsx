@@ -78,9 +78,7 @@ export default function Home() {
                             • {new Date().getFullYear() - 2017}+ years of experience in startups, in countless projects,
                             domains, and industries.
                         </div>
-                        <div style={{ marginBottom: '8px' }}>
-                            • Passionate about product research, architecture design, and turning ideas into reality
-                        </div>
+                        <div style={{ marginBottom: '8px' }}>• Will never stop learning.</div>
                     </div>
                 </div>
 
@@ -109,6 +107,11 @@ export default function Home() {
                                     <li>IoT device management dashboard for thousands of devices</li>
                                     <li>Distributed authorization system (ABAC/OPA pattern)</li>
                                     <li>Product vision and architecture design</li>
+                                    <li>Wrote and deployed scalable apps on AWS Elastic Kubernetes Service</li>
+                                    <li>
+                                        Worked on setting up a redundant,scalable, secure VPN network for all our iot
+                                        devices
+                                    </li>
                                 </ul>
                             </div>
 
@@ -126,7 +129,7 @@ export default function Home() {
                                 <strong>Team Lead @ Revstar Consulting</strong> (USA) |{' '}
                                 <span style={{ color: '#666', fontSize: '12px' }}>Jul 2020 - Jun 2021</span>
                                 <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
-                                    <li>Led team of 8 developers</li>
+                                    <li>Led team of 5 developers</li>
                                     <li>Medical industry solutions (frontend, backend, AWS)</li>
                                     <li>HIPAA-compliant software design</li>
                                 </ul>
@@ -144,7 +147,7 @@ export default function Home() {
 
                             <div style={{ marginBottom: '12px' }}>
                                 <strong>Frontend Engineer @ Dierbro</strong> (IT) |{' '}
-                                <span style={{ color: '#666', fontSize: '12px' }}>Oct 2018 - Jul 2019</span>
+                                <span style={{ color: '#666', fontSize: '12px' }}>Oct 2017 - Jul 2019</span>
                                 <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
                                     <li>ERP application (React JS, React Native)</li>
                                     <li>Performance optimization for large-scale applications</li>
