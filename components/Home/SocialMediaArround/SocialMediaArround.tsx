@@ -73,6 +73,11 @@ export default function SocialMediaEmail(props: { finishedLoading: boolean }) {
                         </a>
                     </motion.div>
 
+                    {/* Address */}
+                    <motion.div initial={{ rotate: 90 }} className="">
+                        <span className="font-Header tracking-wider text-gray-400">Munich, Germany</span>
+                    </motion.div>
+
                     <div className="h-24 w-0.5 bg-gray-400"></div>
                 </div>
             </motion.div>

@@ -1,187 +1,322 @@
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 import Head from 'next/head'
-import { useContext, useEffect, useRef, useState } from 'react'
-import AppContext from '../components/AppContextFolder/AppContext'
-import ScreenSizeDetector from '../components/CustomComponents/ScreenSizeDetector'
-import Footer from '../components/Footer/Footer'
-import Header from '../components/Header/Header'
-import Startup from '../components/Header/StartupLogo/Startup'
-import AboutMe from '../components/Home/AboutMe/AboutMe'
-import GetInTouch from '../components/Home/GetInTouch/GetInTouch'
-import Maintenance from '../components/Home/Maintenance/Maintenance'
-import MyName from '../components/Home/MyName/MyName'
-import SocialMediaArround from '../components/Home/SocialMediaArround/SocialMediaArround'
-import SomethingIveBuilt from '../components/Home/SomethingIveBuilt/SomethingIveBuilt'
-import ThisCantBeReached from '../components/Home/ThisSiteCantBeReached/ThisCantBeReached'
-import WhereIHaveWorked from '../components/Home/WhereIHaveWorked/WhereIHaveWorked'
+import { useState } from 'react'
+
 export default function Home() {
-    const [ShowElement, setShowElement] = useState(false)
-    const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(true)
-    const [ShowMe, setShowMe] = useState(false)
-    // context Variable to clearInterval
-    const context = useContext(AppContext)
-    const aboutRef = useRef<HTMLDivElement>(null)
-    const homeRef = useRef<HTMLDivElement>(null)
-
-    // userData state that will be used to get usr location
-    const [userData, setUserData] = useState(null)
-
-    // check if user from Black List
-    const [isBlackListed, setIsBlackListed] = useState(false)
-
-    // check if NEXT_PUBLC_BLACKLIST_COUNTRIES is empty
-    const [IsBlackListEmpty, setIsBlackListEmpty] = useState(
-        process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES === '' ? true : false
-    )
-
-    // this userEffect will be called to get the user location, so we can check if he is from the blackList,
-    // this will only run if NEXT_PUBLIC_BLACKLIST_COUNTRIES is not empty
-    useEffect(() => {
-        if (!IsBlackListEmpty) {
-            const fetchData = async () => {
-                try {
-                    const IP_Address = async () => {
-                        return fetch('https://api.ipify.org/?format=json')
-                            .then((res) => res.json())
-                            .then((data) => data.ip)
-                    }
-
-                    const response = await fetch('/api/userInfoByIP/' + (await IP_Address())) // Replace with your actual API endpoint
-                    const data = await response.json()
-                    setUserData(data)
-                } catch (error) {
-                    console.error('Error fetching data location and ip address:', error)
-                    // Handle errors as needed
-                }
-            }
-
-            fetchData()
-        }
-    }, [IsBlackListEmpty]) // Empty dependency array ensures that this effect runs once when the component mounts
-
-    // this useEffect will be called when userData is set
-    useEffect(() => {
-        // this will only run if NEXT_PUBLIC_BLACKLIST_COUNTRIES is not empty
-        if (!IsBlackListEmpty) {
-            if (userData) {
-                // check if the user country is in the blackList
-                if (
-                    [
-                        'india',
-                        'china',
-                        'russia',
-                        'nigeria',
-                        'pakistan',
-                        'ethiopia',
-                        'vietnam',
-                        'indonesia',
-                        'turkey',
-                        'egypt',
-                        'iran',
-                        'thailand',
-                        'south africa',
-                        'colombia',
-                        'kenya',
-                        'argentina',
-                        'mexico',
-                        'brazil'
-                    ].includes(userData?.country?.toLowerCase())
-                ) {
-                    // set isBlackListed to true
-                    setIsBlackListed(true)
-                }
-            }
-        }
-    }, [IsBlackListEmpty, userData])
-
-    useEffect(() => {
-        // remove the interval Cookie timer setter when
-        clearInterval(context.sharedState.userdata.timerCookieRef.current)
-        if (typeof window !== 'undefined') {
-            // remove UserDataPuller project EventListeners
-            window.removeEventListener('resize', context.sharedState.userdata.windowSizeTracker.current)
-            window.removeEventListener('mousemove', context.sharedState.userdata.mousePositionTracker.current, false)
-            // remove Typing project EventListeners
-            window.removeEventListener('resize', context.sharedState.typing.eventInputLostFocus)
-            document.removeEventListener('keydown', context.sharedState.typing.keyboardEvent)
-        }
-        setTimeout(() => {
-            setShowElement(true)
-        }, 4500)
-
-        setTimeout(() => {
-            setShowThisCantBeReached(false)
-        }, 5400)
-        // ? INFORMATIONAL next function will show the component after changing the state of ShowMe
-        setTimeout(() => {
-            setShowElement(false)
-            setShowMe(true)
-            context.sharedState.finishedLoading = true
-            context.setSharedState(context.sharedState)
-        }, 10400)
-    }, [context, context.sharedState])
-
-    useEffect(() => {
-        Aos.init({ duration: 2000, once: true })
-    }, [])
-
-    console.log('website is rendering...')
-    const meta = {
-        title: 'Erald Calaj - Software Engineer',
-        description: `I've been working on Software development for 10 years straight. Get in touch with me to know more.`,
-        image: '/titofCercle.png',
-        type: 'website'
-    }
-    const isProd = process.env.NODE_ENV === 'production'
+    const [showSkills, setShowSkills] = useState(false)
+    const [showExperience, setShowExperience] = useState(false)
+    const [showProjects, setShowProjects] = useState(false)
+    const [showBeliefs, setShowBeliefs] = useState(false)
 
     return (
         <>
             <Head>
-                <title>{meta.title}</title>
-                <meta name="robots" content="follow, index" />
-                <meta content={meta.description} name="description" />
-                <meta property="og:url" content={`https://eraldcalaj.com`} />
-                <link rel="canonical" href={`https://eraldcalaj.com`} />
-                <meta property="og:type" content={meta.type} />
-                <meta property="og:site_name" content="Manu Arora" />
-                <meta property="og:description" content={meta.description} />
-                <meta property="og:title" content={meta.title} />
-                <meta property="og:image" content={meta.image} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@titofabdo" />
-                <meta name="twitter:title" content={meta.title} />
-                <meta name="twitter:description" content={meta.description} />
-                <meta name="twitter:image" content={meta.image} />
+                <title>Erald Calaj - Software Engineer</title>
+                <meta
+                    name="description"
+                    content="Software Engineer with 10+ years experience in full-stack development, product research, and architecture design."
+                />
             </Head>
-
-            {!isBlackListed ? (
-                <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full ">
-                    {context.sharedState.finishedLoading ? (
-                        <></>
-                    ) : ShowThisCantBeReached ? (
-                        <ThisCantBeReached />
-                    ) : (
-                        <></>
-                    )}
-                    {context.sharedState.finishedLoading ? <></> : ShowElement ? <Startup /> : <></>}
-                    <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
-                    <MyName finishedLoading={context.sharedState.finishedLoading} />
-                    <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />
-                    {context.sharedState.finishedLoading ? <AboutMe ref={aboutRef} /> : <></>}
-                    {context.sharedState.finishedLoading ? <WhereIHaveWorked /> : <></>}
-                    {context.sharedState.finishedLoading ? <SomethingIveBuilt /> : <></>}
-                    {context.sharedState.finishedLoading ? <GetInTouch /> : <></>}
-                    {context.sharedState.finishedLoading ? (
-                        <Footer githubUrl={'https://github.com/hktitof/my-website'} hideSocialsInDesktop={true} />
-                    ) : (
-                        <></>
-                    )}
-                    {!isProd && <ScreenSizeDetector />}
+            <div
+                style={{
+                    fontFamily: 'Arial, sans-serif',
+                    lineHeight: '1.4',
+                    maxWidth: '1000px',
+                    margin: '0 auto',
+                    padding: '15px',
+                    color: '#333',
+                    fontSize: '13px'
+                }}
+            >
+                {/* Header */}
+                <div style={{ marginBottom: '20px', borderBottom: '2px solid #333', paddingBottom: '10px' }}>
+                    <h1 style={{ margin: '0 0 5px 0', fontSize: '28px' }}>Erald Calaj</h1>
+                    <p style={{ margin: '0', fontSize: '14px', color: '#666' }}>
+                        Software Engineer | Product Research | Architecture Design
+                    </p>
+                    <div style={{ marginTop: '8px', fontSize: '12px' }}>
+                        <a href="mailto:eraldcalaj@gmail.com" style={{ color: '#0066cc', textDecoration: 'none' }}>
+                            eraldcalaj@gmail.com
+                        </a>{' '}
+                        | Munich, Germany
+                    </div>
                 </div>
-            ) : (
-                <Maintenance />
-            )}
+
+                {/* About Me */}
+                <div style={{ marginBottom: '15px' }}>
+                    <h2
+                        style={{
+                            margin: '0 0 10px 0',
+                            fontSize: '16px',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '5px'
+                        }}
+                    >
+                        Some things about me:
+                    </h2>
+                    <div style={{ fontSize: '12px', lineHeight: '1.6' }}>
+                        <div style={{ marginBottom: '8px' }}>
+                            • I grew up in a small village in albania, it looked something like this:{' '}
+                            <a
+                                href="/gallery/index23.jpg"
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{ color: '#0066cc', textDecoration: 'none' }}
+                            >
+                                [image]
+                            </a>
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            • Started coding at 15, explored apps like Dreamweaver which sparked my interest
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            • I like to play only 2 video games, Rust and Overwatch.
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            • Generalist, but once in a while I like to specialize in a specific domains.
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            • {new Date().getFullYear() - 2017}+ years of experience in startups, in countless projects,
+                            domains, and industries.
+                        </div>
+                        <div style={{ marginBottom: '8px' }}>
+                            • Passionate about product research, architecture design, and turning ideas into reality
+                        </div>
+                    </div>
+                </div>
+
+                {/* Experience */}
+                <div style={{ marginBottom: '15px' }}>
+                    <h2
+                        onClick={() => setShowExperience(!showExperience)}
+                        style={{
+                            margin: '0 0 10px 0',
+                            fontSize: '16px',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '5px',
+                            cursor: 'pointer',
+                            userSelect: 'none'
+                        }}
+                    >
+                        Experience {showExperience ? '−' : '+'}
+                    </h2>
+
+                    {showExperience && (
+                        <>
+                            <div style={{ marginBottom: '12px' }}>
+                                <strong>Senior Software Engineer @ Wemolo</strong> (DE) |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>Jun 2023 - Present</span>
+                                <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
+                                    <li>IoT device management dashboard for thousands of devices</li>
+                                    <li>Distributed authorization system (ABAC/OPA pattern)</li>
+                                    <li>Product vision and architecture design</li>
+                                </ul>
+                            </div>
+
+                            <div style={{ marginBottom: '12px' }}>
+                                <strong>Software Engineer @ Quickbird</strong> (DE) |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>Jun 2021 - May 2023</span>
+                                <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
+                                    <li>Full-stack development environments setup</li>
+                                    <li>Web deployment pipelines</li>
+                                    <li>Government-regulated medical applications</li>
+                                </ul>
+                            </div>
+
+                            <div style={{ marginBottom: '12px' }}>
+                                <strong>Team Lead @ Revstar Consulting</strong> (USA) |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>Jul 2020 - Jun 2021</span>
+                                <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
+                                    <li>Led team of 8 developers</li>
+                                    <li>Medical industry solutions (frontend, backend, AWS)</li>
+                                    <li>HIPAA-compliant software design</li>
+                                </ul>
+                            </div>
+
+                            <div style={{ marginBottom: '12px' }}>
+                                <strong>Software Engineer @ Horizont Labs</strong> (UK) |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>Jul 2019 - Jun 2020</span>
+                                <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
+                                    <li>FITSQD fitness platform (React Native, NodeJS)</li>
+                                    <li>Blockchain mobile client (React Native, TypeScript)</li>
+                                    <li>Resource management dashboards (ReactJS)</li>
+                                </ul>
+                            </div>
+
+                            <div style={{ marginBottom: '12px' }}>
+                                <strong>Frontend Engineer @ Dierbro</strong> (IT) |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>Oct 2018 - Jul 2019</span>
+                                <ul style={{ margin: '5px 0 0 20px', padding: '0', fontSize: '12px' }}>
+                                    <li>ERP application (React JS, React Native)</li>
+                                    <li>Performance optimization for large-scale applications</li>
+                                    <li>Scalable client architecture</li>
+                                </ul>
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                {/* Projects */}
+                <div style={{ marginBottom: '15px' }}>
+                    <h2
+                        onClick={() => setShowProjects(!showProjects)}
+                        style={{
+                            margin: '0 0 10px 0',
+                            fontSize: '16px',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '5px',
+                            cursor: 'pointer',
+                            userSelect: 'none'
+                        }}
+                    >
+                        Key Projects {showProjects ? '−' : '+'}
+                    </h2>
+
+                    {showProjects && (
+                        <>
+                            <div style={{ marginBottom: '10px' }}>
+                                <strong>
+                                    <a
+                                        href="https://www.mamly.de"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{ color: '#0066cc', textDecoration: 'none' }}
+                                    >
+                                        Mamly
+                                    </a>
+                                </strong>{' '}
+                                |{' '}
+                                <span style={{ color: '#666', fontSize: '12px' }}>
+                                    Docker, NestJS, ReactJS, Flutter
+                                </span>
+                                <div style={{ fontSize: '12px', marginTop: '3px' }}>
+                                    Post-natal recovery app in collaboration with TK insurance
+                                </div>
+                            </div>
+
+                            <div style={{ marginBottom: '10px' }}>
+                                <strong>
+                                    <a
+                                        href="https://www.parlament.al"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={{ color: '#0066cc', textDecoration: 'none' }}
+                                    >
+                                        Albanian Parliament Landing Page
+                                    </a>
+                                </strong>{' '}
+                                | <span style={{ color: '#666', fontSize: '12px' }}>React, ASP.NET, C#, Redux</span>
+                                <div style={{ fontSize: '12px', marginTop: '3px' }}>
+                                    Requirement gathering, design, implementation, ODATA interface
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                {/* Skills */}
+                <div style={{ marginBottom: '15px' }}>
+                    <h2
+                        onClick={() => setShowSkills(!showSkills)}
+                        style={{
+                            margin: '0 0 10px 0',
+                            fontSize: '16px',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '5px',
+                            cursor: 'pointer',
+                            userSelect: 'none'
+                        }}
+                    >
+                        Skills {showSkills ? '−' : '+'}
+                    </h2>
+
+                    {showSkills && (
+                        <div style={{ fontSize: '12px' }}>
+                            AWS, Terraform, Docker, Node.js, React, Python, Product Research, Architecture Design,
+                            Delivery Management
+                        </div>
+                    )}
+                </div>
+
+                {/* Some things I believe */}
+                <div style={{ marginBottom: '15px' }}>
+                    <h2
+                        onClick={() => setShowBeliefs(!showBeliefs)}
+                        style={{
+                            margin: '0 0 10px 0',
+                            fontSize: '16px',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '5px',
+                            cursor: 'pointer',
+                            userSelect: 'none'
+                        }}
+                    >
+                        Some things I believe: {showBeliefs ? '−' : '+'}
+                    </h2>
+
+                    {showBeliefs && (
+                        <div style={{ fontSize: '12px', lineHeight: '1.6' }}>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Technology is a tool for reshaping the world to better serve human needs
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Focus on raising the ceiling, not just the floor
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Enthusiasm matters—work on things that excite you, energy drives progress
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Speed matters: going fast forces focus on what's important, no time for bullshit
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Time is the denominator—a week is 2% of the year, use it wisely
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • The best opportunities exist where conventional wisdom fails
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • We know less than we think—many of our beliefs are wrong, stay humble
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Small teams are better: faster decisions, fewer meetings, more impact
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • You can do more than you think—we're often limited by invisible orthodoxy
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • Get dopamine from improving your ideas, not just validating them
+                            </div>
+                            <div style={{ marginBottom: '8px' }}>
+                                • The laws of physics are the only true limit—everything else is negotiable
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Footer */}
+                <div
+                    style={{
+                        marginTop: '15px',
+                        paddingTop: '10px',
+                        fontSize: '12px',
+                        textAlign: 'center',
+                        color: '#666'
+                    }}
+                >
+                    <a href="/gallery" style={{ color: '#0066cc', textDecoration: 'none' }}>
+                        Gallery
+                    </a>{' '}
+                    |{' '}
+                    <a
+                        href="https://www.linkedin.com/in/erald-calaj-5b642815b/"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ color: '#0066cc', textDecoration: 'none' }}
+                    >
+                        LinkedIn
+                    </a>{' '}
+                    | &copy; {new Date().getFullYear()} Erald Calaj
+                </div>
+            </div>
         </>
     )
 }

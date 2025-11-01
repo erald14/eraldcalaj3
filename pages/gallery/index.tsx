@@ -1,46 +1,93 @@
-import { ParallaxScroll } from '../../components/ui/parallax-scroll'
+import Head from 'next/head'
+
 export default function Gallery() {
+    const images = [
+        'index1.jpg',
+        'index2.jpg',
+        'index4.jpg',
+        'index5.jpg',
+        'index6.jpg',
+        'index7.jpg',
+        'index8.jpg',
+        'index9.jpg',
+        'index10.jpg',
+        'index11.jpg',
+        'index12.jpg',
+        'index13.jpg',
+        'index14.jpg',
+        'index15.jpg',
+        'index16.jpg',
+        'index17.jpg',
+        'index18.jpg',
+        'index19.jpg',
+        'index20.jpg',
+        'index21.jpg',
+        'index22.jpg',
+        'index23.jpg',
+        'index24.jpg',
+        'index25.jpg',
+        'index26.jpg',
+        'index27.jpg',
+        'index28.jpg',
+        'index29.jpg',
+        'index30.jpg',
+        'index31.jpg',
+        'index32.jpg',
+        'index33.jpg',
+        'index34.jpg',
+        'index35.jpg',
+        'index36.jpg'
+    ]
+
     return (
-        <div>
-            <ParallaxScroll
-                images={[
-                    '/gallery/index1.jpg',
-                    '/gallery/index2.jpg',
-                    '/gallery/index4.jpg',
-                    '/gallery/index5.jpg',
-                    '/gallery/index6.jpg',
-                    '/gallery/index7.jpg',
-                    '/gallery/index8.jpg',
-                    '/gallery/index9.jpg',
-                    '/gallery/index10.jpg',
-                    '/gallery/index11.jpg',
-                    '/gallery/index12.jpg',
-                    '/gallery/index13.jpg',
-                    '/gallery/index14.jpg',
-                    '/gallery/index15.jpg',
-                    '/gallery/index16.jpg',
-                    '/gallery/index17.jpg',
-                    '/gallery/index18.jpg',
-                    '/gallery/index19.jpg',
-                    '/gallery/index20.jpg',
-                    '/gallery/index21.jpg',
-                    '/gallery/index22.jpg',
-                    '/gallery/index23.jpg',
-                    '/gallery/index24.jpg',
-                    '/gallery/index25.jpg',
-                    '/gallery/index26.jpg',
-                    '/gallery/index27.jpg',
-                    '/gallery/index28.jpg',
-                    '/gallery/index29.jpg',
-                    '/gallery/index30.jpg',
-                    '/gallery/index31.jpg',
-                    '/gallery/index32.jpg',
-                    '/gallery/index33.jpg',
-                    '/gallery/index34.jpg',
-                    '/gallery/index35.jpg',
-                    '/gallery/index36.jpg'
-                ]}
-            />
-        </div>
+        <>
+            <Head>
+                <title>Gallery - Erald Calaj</title>
+            </Head>
+            <div
+                style={{
+                    fontFamily: 'Arial, sans-serif',
+                    lineHeight: '1.6',
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                    padding: '20px',
+                    color: '#333'
+                }}
+            >
+                <h1 style={{ textAlign: 'center', margin: '40px 0' }}>Gallery</h1>
+                <div style={{ display: 'block', textAlign: 'center', margin: '20px 0' }}>
+                    <a href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>
+                        ← Back to Home
+                    </a>
+                </div>
+                <div
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                        gap: '20px',
+                        margin: '40px 0'
+                    }}
+                >
+                    {images.map((img, index) => (
+                        <img
+                            key={index}
+                            src={`/gallery/${img}`}
+                            alt={`Gallery image ${index + 1}`}
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                borderRadius: '4px',
+                                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                            }}
+                        />
+                    ))}
+                </div>
+                <div style={{ display: 'block', textAlign: 'center', margin: '20px 0' }}>
+                    <a href="/" style={{ color: '#0066cc', textDecoration: 'none' }}>
+                        ← Back to Home
+                    </a>
+                </div>
+            </div>
+        </>
     )
 }
